@@ -1,80 +1,21 @@
+---
+layout: none
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rudkerfern.net</title>
-    <description>The technical toughts and ramblings of g.r.plyler</description>
-    <link>http://localhost:4000</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    
+    <title>{{ site.title }}</title>
+    <description>{{ site.description }}</description>
+    <link>{{ site.url }}</link>
+    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
+    {% for post in site.posts limit:10 %}
       <item>
-        <title>Atom: The Totally Awesome, Open Source Code Editor</title>
-        <description>&lt;blockquote&gt;
-&lt;h3&gt;Atom,&lt;/h3&gt;
-
-&lt;p&gt;A hackable text editor for the 21st Century&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The other day I stumbled across an absolute jewel.
-After reading
-&lt;a href=&quot;http://tom.preston-werner.com/2014/04/21/farewell-github-hello-immersive-computing.html&quot;&gt;one of Tom Preston-Weners blog posts&lt;/a&gt;
-I decided to check out the repositories he had contributed to.
-One of his contributions was towards a projects named &amp;ldquo;&lt;a href=&quot;http://atom.io/&quot;&gt;Atom&lt;/a&gt;&amp;rdquo;.
-The projects name sparked my curiously as it looked terribly cool.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/atom-screen.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;As you can see from the image above. it &lt;em&gt;&lt;strong&gt;is&lt;/strong&gt;&lt;/em&gt; totally cool.
-This Powerhouse of a code editor was amazing once i opened it
-up on my mac. Besides being really fully featured with an amazing
-interface, its also open source!
-See for yourself, straight from the website:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;h3&gt;Full-featured, right out of the box&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Fuzzy finder for quickly opening files&lt;/li&gt;
-&lt;li&gt;Fast project-wide search and replace&lt;/li&gt;
-&lt;li&gt;Multiple cursors and selections&lt;/li&gt;
-&lt;li&gt;Multiple panes&lt;/li&gt;
-&lt;li&gt;Snippets&lt;/li&gt;
-&lt;li&gt;Code folding&lt;/li&gt;
-&lt;li&gt;A clean preferences UI&lt;/li&gt;
-&lt;li&gt;Import TextMate grammars and themes&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I&amp;rsquo;ll do less writing and let you do more looking.
-Look at this Preferences window! It pulls up as a tab in your
-workspace!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/atom-pref.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;I have been using Atom for few days how and really enjoy it.
-Another cool functionality it includes is a command line script.
-Say you are working in a Terminal, and just want to open a whole
-project in atom, just type &lt;code&gt;atom&lt;/code&gt; and it will open Atom with
-the files and folders in your current working directory.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 07 Jul 2014 19:32:00 +0800</pubDate>
-        <link>http://localhost:4000/2014/07/07/atom-the-code-editor/</link>
-        <guid isPermaLink="true">http://localhost:4000/2014/07/07/atom-the-code-editor/</guid>
+        <title>{{ post.title }}</title>
+        <description>{{ post.content | xml_escape | replace: 'javascript||' | replace: 'shell||' | replace: 'ruby||' | replace: 'html||' }}</description>
+        <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+        <link>{{ site.url }}{{ post.url }}</link>
+        <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
       </item>
-    
-      <item>
-        <title>Finally up and running</title>
-        <description>&lt;p&gt;It&amp;rsquo;s 2:18 in the morning and I finally have
-the beginnings for my personal Jekyll site
-and blog.
-I&amp;rsquo;m too tired right now to write anything more
-but i&amp;rsquo;ll have more content coming soon.
-I just didn&amp;rsquo;t want to leave it a brand new site
-with nothing on it.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 07 Jul 2014 02:18:00 +0800</pubDate>
-        <link>http://localhost:4000/2014/07/07/finally-up/</link>
-        <guid isPermaLink="true">http://localhost:4000/2014/07/07/finally-up/</guid>
-      </item>
-    
+    {% endfor %}
   </channel>
 </rss>
