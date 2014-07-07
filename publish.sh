@@ -6,6 +6,7 @@ echo "Done."
 
 echo "Publishing Locally..."
 rsync -a \
+--delete \
 --exclude=".*" \
 --exclude="publish.sh" \
 ./_site/ ../grplyler.github.io/
@@ -14,6 +15,7 @@ echo "Done."
 echo "Publishing to hqlocal..."
 rsync -a \
 -e "ssh -l root -p 22003" \
+--delete \
 --exclude=".*" \
 --exclude="publish.sh" \
 --chown www-data:root \
