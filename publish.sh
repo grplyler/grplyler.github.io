@@ -8,7 +8,7 @@ echo "Publishing to hqlocal..."
 rsync -a \
 -e "ssh -l root -p 22003" \
 --exclude=".*" \
---exclude="publish.sh"
+--exclude="publish.sh" \
 --chown www-data:root \
 ../grplyler.github.io/ 192.168.1.103:/var/www/
 echo "Done."
