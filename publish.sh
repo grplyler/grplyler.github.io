@@ -8,7 +8,7 @@ echo "Publishing Locally..."
 rsync -a \
 --exclude=".*" \
 --exclude="publish.sh" \
-./ ../grplyler.github.io/
+./_site/ ../grplyler.github.io/
 echo "Done."
 
 echo "Publishing to hqlocal..."
